@@ -1,0 +1,130 @@
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+<script src="controls.js"third_party/ray.min.js""></script>
+
+    <style>
+
+#controls
+        {
+            width: 100px;
+            height: 100px;
+            position: fixed;
+            left: 50px;
+            bottom: 70px;
+            z-index: 1;
+}
+.forward
+        {
+            width: 50px;
+            height: 50px;
+            z-index: 2;
+            position: relative;
+            left: 25px;
+            bottom: 25px;
+            
+}
+.back
+        {
+            width: 50px;
+            height: 50px;
+            z-index: 2;
+            position: relative;
+            left: 25px;
+            bottom: -25px;
+            transform: rotate(180deg);
+            
+}
+.left
+        {
+            width: 50px;
+            height: 50px;
+            z-index: 2;
+            position: relative;
+            left: -25px;
+            bottom: 75px;
+            transform: rotate(-90deg);
+            
+}
+.right
+        {
+            width: 50px;
+            height: 50px;
+            z-index: 2;
+            position: relative;
+            left: 75px;
+            bottom: 125px;
+            transform: rotate(90deg);
+            
+}
+        img{
+            width: 100%;
+            height: auto;
+        }
+        
+        .forward img:hover, .left img:hover,.right img:hover, .back img:hover{
+            cursor: pointer;
+        }
+        
+        @media only screen 
+  and (min-device-width: 320px) and (max-device-width: 815px) and (-webkit-min-device-pixel-ratio: 2) {
+        
+        #controls {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    z-index: 1;
+    transform: scale(0.6);
+}
+      
+      img{
+            width: 100%;
+            height: auto;
+        }
+        }
+
+</style>
+    <body>
+        
+        
+        <div id="controls">
+        <div class="forward"><img src="Forward.svg"/></div>
+            <div class="back"><img src="Forward.svg"/></div>
+            <div class="left"><img src="Forward.svg"/></div>
+            <div class="right"><img src="Forward.svg"/></div>
+        </div>
+        
+        
+        
+        <a-scene>
+            <a-assets>
+                <a-asset-item id="object" src="house.obj" position="0 0 50" scale="5"></a-asset-item>
+                 <a-asset-item id="material" src="house.mtl"></a-asset-item>
+
+            </a-assets>
+                    <a-plane rotation="-90 0 0" width="300" height="300" position="0 0.5 1" opacity="0"></a-plane>
+            
+                        
+            <!-- Using the asset management system. -->
+            <a-obj-model src="#object" mtl="#material"></a-obj-model>
+            <a-entity position="-8 7 -20" daydream-controls>
+            <a-camera></a-camera>
+                        <a-sky src="stars.jpeg"></a-sky>
+
+                    <a-light type="point" color="#B2E6FF" look-at="a-asset-item" position="0 90 0" rotation="60 5 80"></a-light>
+
+
+
+            </a-entity>
+
+          
+            
+            
+            <!-- Defining the URL inline. Not recommended but may be more comfortable. -->
+            <a-obj-model src="models/aztec-temple.obj" mtl="models/aztec-temple.mtl"></a-obj-model>
+            
+        </a-scene>
+    </body>
